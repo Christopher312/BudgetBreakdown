@@ -39,115 +39,115 @@
 			//alert(spendingValues)
 			var totalMoney = document.getElementById("money").value;
 			var scale = totalMoney / spendingValues[0]
-			alert(scale * spendingValues[1] / 100)
+			//alert(scale * spendingValues[1] / 100)
 			var pie = new d3pie("pieChart", {
-	"header": {
-		"title": {
-			"text": "[TITLE HERE]",
-			"color": "#ffffff",
-			"fontSize": 24,
-			"font": "open sans"
-		},
-		"subtitle": {
-			"text": "[subtitle here]",
-			"color": "#999999",
-			"fontSize": 12,
-			"font": "open sans"
-		},
-		"titleSubtitlePadding": 9
-	},
-	"footer": {
-		"text": "[footer text here]",
-		"color": "#999999",
-		"fontSize": 10,
-		"font": "open sans",
-		"location": "bottom-left"
-	},
-	"size": {
-		"canvasWidth": 590,
-		"pieOuterRadius": "90%"
-	},
-	"data": {
-		"sortOrder": "value-desc",
-		"content": [
-			{
-				"label": "K12",
-				"value": totalMoney * spendingValues[1] / 100.0,
-				"color": "#0066cc"
-			},
-			{
-				"label": "Higher Ed",
-				"value": totalMoney * spendingValues[2] / 100.0,
-				"color": "#003366"
-			},
-			{
-				"label": "Public Assistance",
-				"value": totalMoney * spendingValues[3] / 100.0,
-				"color": "#336600"
-			},
-			{
-				"label": "Medicaid",
-				"value": totalMoney * spendingValues[4] / 100.0,
-				"color": "#669966"
-			},
-			{
-				"label": "Corrections",
-				"value": totalMoney * spendingValues[5] / 100.0,
-				"color": "#990000"
-			},
-			{
-				"label": "Transportation",
-				"value": totalMoney * spendingValues[6] / 100.0,
-				"color": "#cc6600"
-			},
-			{
-				"label": "Other",
-				"value": totalMoney * spendingValues[7] / 100.0,
-				"color": "#65cc32"
-			}
-		]
-	},
-	"labels": {
-		"outer": {
-			"pieDistance": 32
-		},
-		"inner": {
-			"hideWhenLessThanPercentage": 5,
-			"format": "value"
-		},
-		"mainLabel": {
-			"fontSize": 11,
-			"color": "#ffffff"
-		},
-		"percentage": {
-			"color": "#ffffff",
-			"decimalPlaces": 0
-		},
-		"value": {
-			"color": "#ffffff",
-			"fontSize": 15
-		},
-		"lines": {
-			"enabled": true
-		},
-		"truncation": {
-			"enabled": true
-		}
-	},
-	"effects": {
-		"pullOutSegmentOnClick": {
-			"effect": "linear",
-			"speed": 400,
-			"size": 8
-		}
-	},
-	"misc": {
-		"gradient": {
-			"enabled": true,
-			"percentage": 100
-		}
-	}
-});
+				"header": {
+					"title": {
+						"text": "Where the state of "+st+" spends your money:",
+						"color": "#ffffff",
+						"fontSize": 24,
+						"font": "open sans"
+					},
+					"subtitle": {
+						"text": "total expenditure for "+st+": "+spendingValues[0]+" billion USD",
+						"color": "#999999",
+						"fontSize": 12,
+						"font": "open sans"
+					},
+					"titleSubtitlePadding": 9
+				},
+				"footer": {
+					"text": "data aggregated by ballotpedia.org",
+					"color": "#999999",
+					"fontSize": 10,
+					"font": "open sans",
+					"location": "bottom-left"
+				},
+				"size": {
+					"canvasWidth": 590,
+					"pieOuterRadius": "90%"
+				},
+				"data": {
+					"sortOrder": "value-desc",
+					"content": [
+						{
+							"label": "K12",
+							"value": totalMoney * spendingValues[1] / 100.0,
+							"color": "#0066cc"
+						},
+						{
+							"label": "Higher Ed",
+							"value": totalMoney * spendingValues[2] / 100.0,
+							"color": "#003366"
+						},
+						{
+							"label": "Public Assistance",
+							"value": totalMoney * spendingValues[3] / 100.0,
+							"color": "#336600"
+						},
+						{
+							"label": "Medicaid",
+							"value": totalMoney * spendingValues[4] / 100.0,
+							"color": "#669966"
+						},
+						{
+							"label": "Corrections",
+							"value": totalMoney * spendingValues[5] / 100.0,
+							"color": "#990000"
+						},
+						{
+							"label": "Transportation",
+							"value": totalMoney * spendingValues[6] / 100.0,
+							"color": "#cc6600"
+						},
+						{
+							"label": "Other",
+							"value": totalMoney * spendingValues[7] / 100.0,
+							"color": "#65cc32"
+						}
+					]
+				},
+				"labels": {
+					"outer": {
+						"pieDistance": 32
+					},
+					"inner": {
+						"hideWhenLessThanPercentage": 5,
+						"format": "value"
+					},
+					"mainLabel": {
+						"fontSize": 11,
+						"color": "#ffffff"
+					},
+					"percentage": {
+						"color": "#ffffff",
+						"decimalPlaces": 0
+					},
+					"value": {
+						"color": "#ffffff",
+						"fontSize": 15
+					},
+					"lines": {
+						"enabled": true
+					},
+					"truncation": {
+						"enabled": true
+					}
+				},
+				"effects": {
+					"pullOutSegmentOnClick": {
+						"effect": "linear",
+						"speed": 400,
+						"size": 8
+					}
+				},
+				"misc": {
+					"gradient": {
+						"enabled": true,
+						"percentage": 100
+					}
+				}
+			});
 		}
 		function processForm2(){
 		var data = [4, 8, 15, 16, 23, 42];
