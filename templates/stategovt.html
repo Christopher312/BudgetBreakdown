@@ -25,6 +25,7 @@
 		</style>
 		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 		<script src="/static/assets/js/d3pie.min.js"></script>
+		<script src="static/assets/js/jquery.min.js"></script>
 		<script>
 		var map = new Map()
 		map.set("PA", [72.821, 18.7, 2.6, 5.5, 33.3, 3.4, 9.6, 26.8])
@@ -40,6 +41,12 @@
 			var totalMoney = document.getElementById("money").value;
 			var scale = totalMoney / spendingValues[0]
 			//alert(scale * spendingValues[1] / 100)
+			//document.getElementById("picChart").innerHTML = "";
+			/*var node = document.getElementById("pieChart");
+			while(node.hasChildNodes()){
+
+			}*/
+			$("#pieChart").empty();
 			var pie = new d3pie("pieChart", {
 				"header": {
 					"title": {
@@ -363,7 +370,7 @@
  											  </div>
 										</div> -->				
 		<!-- Scripts -->
-			<script src="static/assets/js/jquery.min.js"></script>
+			
 			<script src="static/assets/js/jquery.scrolly.min.js"></script>
 			<script src="static/assets/js/jquery.scrollex.min.js"></script>
 			<script src="static/assets/js/skel.min.js"></script>

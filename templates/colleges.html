@@ -20,9 +20,10 @@
 
 
 		function processForm() {
-			var college = document.getElementById("college").value
-			var spendingValues = map.get(college)
-			var totalMoney = document.getElementById("money").value
+			var college = document.getElementById("college").value;
+			var spendingValues = map.get(college);
+			var totalMoney = document.getElementById("money").value;
+			$("#pieChart").empty();
 			var pie = new d3pie("pieChart", {
 				"header": {
 					"title": {
