@@ -2037,7 +2037,7 @@
 		text-decoration: none;
 		display: block;
 		position: relative;
-		max-width: 200px;
+		/*max-width: 200px;*/
 	}
 
 		.select-wrapper:before {
