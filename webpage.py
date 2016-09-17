@@ -1,6 +1,6 @@
 from flask import render_template, Flask, request, json, send_from_directory
 import os
-app = Flask(__name__, static_folder='/Users/christophermorris/Documents/Homework/Hackathons/BudgetBreakdown/static')
+app = Flask(__name__, static_folder='./static')
 
 @app.route('/')
 def home():
