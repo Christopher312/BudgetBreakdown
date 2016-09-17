@@ -37,8 +37,9 @@
 			var spendingValues = map.get(st);
 			var keys = map.get("name")
 			//alert(spendingValues)
-			var totalMoney = document.getElementById("money");
+			var totalMoney = document.getElementById("money").value;
 			var scale = totalMoney / spendingValues[0]
+			alert(scale * spendingValues[1] / 100)
 			var pie = new d3pie("pieChart", {
 	"header": {
 		"title": {
@@ -69,29 +70,34 @@
 		"sortOrder": "value-desc",
 		"content": [
 			{
-				"label": "pie 1",
-				"value": 1,
+				"label": "K12",
+				"value": scale * spendingValues[1] / 100,
 				"color": "#7c37c0"
 			},
 			{
-				"label": "pie 2",
-				"value": 2,
+				"label": "Higher Ed",
+				"value": scale * spendingValues[2] / 100,
 				"color": "#cc9fb1"
 			},
 			{
-				"label": "pie 3",
-				"value": 3,
+				"label": "Public Assistance",
+				"value": scale * spendingValues[3] / 100,
 				"color": "#e65414"
 			},
 			{
-				"label": "pie 4",
-				"value": 4,
+				"label": "Medicaid",
+				"value": scale * spendingValues[4] / 100,
 				"color": "#8b6834"
 			},
 			{
-				"label": "pie 5",
-				"value": 5,
+				"label": "Corrections",
+				"value": scale * spendingValues[5] / 100,
 				"color": "#248838"
+			},
+			{
+				"label": "Other",
+				"value": scale * spendingValues[5] / 100,
+				"color": "#000000"
 			}
 		]
 	},
@@ -100,18 +106,19 @@
 			"pieDistance": 32
 		},
 		"inner": {
-			"hideWhenLessThanPercentage": 3
+			"hideWhenLessThanPercentage": 1
 		},
 		"mainLabel": {
-			"fontSize": 11
+			"fontSize": 11,
+			"color": "#ffffff"
 		},
 		"percentage": {
 			"color": "#ffffff",
 			"decimalPlaces": 0
 		},
 		"value": {
-			"color": "#adadad",
-			"fontSize": 11
+			"color": "#ffffff",
+			"fontSize": 15
 		},
 		"lines": {
 			"enabled": true
