@@ -17,8 +17,6 @@ def stgov():
 def fedgov():
 	return render_template('fedgovt.html')
 
-@app.route('')
-
 
 if __name__ == "__main__":
 	app.run()
