@@ -14,6 +14,8 @@ def stgov():
 	return render_template("stategovt.html")
 
 @app.route('/fedgovt')
+def fedgov():
+	return render_template('fedgovt.html')
 
 
 if __name__ == "__main__":
