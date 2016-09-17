@@ -12,6 +12,117 @@
 		<link rel="stylesheet" href="static/assets/css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="static/assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="static/assets/css/ie8.css" /><![endif]-->
+		<script src="http://d3js.org/d3.v3.min.js"  charset="utf-8"></script>
+		<script src="/static/assets/js/d3pie.min.js"></script>
+		<script>
+		var map = new Map()
+		map.set("CMU", [65.7,15.9,12.0,5.5,0.9])
+
+
+		function processForm() {
+			var college = document.getElementById("college").value
+			var spendingValues = map.get(college)
+			var totalMoney = document.getElementById("money").value
+			var pie = new d3pie("pieChart", {
+				"header": {
+					"title": {
+						"text": "Where "+college+" spends your money:",
+						"color": "#ffffff",
+						"fontSize": 24,
+						"font": "open sans"
+					},
+					"subtitle": {
+						"text": "total expenditure for "+college+": "+spendingValues[0]+" billion USD",
+						"color": "#999999",
+						"fontSize": 12,
+						"font": "open sans"
+					},
+					"titleSubtitlePadding": 9
+				},
+				"footer": {
+					"text": "data aggregated by ballotpedia.org",
+					"color": "#999999",
+					"fontSize": 10,
+					"font": "open sans",
+					"location": "bottom-left"
+				},
+				"size": {
+					"canvasWidth": 590,
+					"pieOuterRadius": "90%"
+				},
+				"data": {
+					"sortOrder": "value-desc",
+					"content": [
+						{
+							"label": "Salaries and Benefits",
+							"value": totalMoney * spendingValues[1] / 100.0,
+							"color": "#0066cc"
+						},
+						{
+							"label": "Supplies and Services",
+							"value": totalMoney * spendingValues[2] / 100.0,
+							"color": "#003366"
+						},
+						{
+							"label": "Occupancy and Other",
+							"value": totalMoney * spendingValues[3] / 100.0,
+							"color": "#336600"
+						},
+						{
+							"label": "Depreciation and Amortization",
+							"value": totalMoney * spendingValues[4] / 100.0,
+							"color": "#669966"
+						},
+						{
+							"label": "Interest Expense",
+							"value": totalMoney * spendingValues[5] / 100.0,
+							"color": "#990000"
+						}
+					]
+				},
+				"labels": {
+					"outer": {
+						"pieDistance": 32
+					},
+					"inner": {
+						"hideWhenLessThanPercentage": 5,
+						"format": "value"
+					},
+					"mainLabel": {
+						"fontSize": 11,
+						"color": "#ffffff"
+					},
+					"percentage": {
+						"color": "#ffffff",
+						"decimalPlaces": 0
+					},
+					"value": {
+						"color": "#ffffff",
+						"fontSize": 15
+					},
+					"lines": {
+						"enabled": true
+					},
+					"truncation": {
+						"enabled": true
+					}
+				},
+				"effects": {
+					"pullOutSegmentOnClick": {
+						"effect": "linear",
+						"speed": 400,
+						"size": 8
+					}
+				},
+				"misc": {
+					"gradient": {
+						"enabled": true,
+						"percentage": 100
+					}
+				}
+			});
+		}
+		</script>
 	<body>
 
 		<!-- Wrapper -->
@@ -66,10 +177,10 @@
 									<!-- Break -->
 										<div class="12u$">
 											<div class="select-wrapper" >
-												<select name="state" id="state" placeholder="Choose your country">
-													<option value="USA">Carnegie Mellon University</option>
-													<option value="CAN">Harvard College</option>
-													<option value="GER">University of Chicago</option>
+												<select name="college" id="college" placeholder="Choose your country">
+													<option value="CMU">Carnegie Mellon University</option>
+													<option value="Harvard">Harvard College</option>
+													<option value="UC">University of Chicago</option>
 													<option value="SKR">Stanford University</option>
 													<option value="MEX">Texas A\&M</option>
 													<option value="MEX">Georgia Tech</option>
@@ -87,7 +198,7 @@
 									<br>
 									<button type="button" id="submit" onclick="processForm()">Submit</button>
 								</form>
-
+							<div id="pieChart" align="center"></div>
 						<!-- Three -->
 							<section id="three">
 								<div class="inner">
