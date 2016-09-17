@@ -9,5 +9,10 @@ def home():
     #return send_from_directory(os.path.join(root_dir, 'static', 'js'), 'index.html')
     return render_template("index.html")
 
+ @app.route('/stategovt')
+ def stgov():
+ 	return render_template("stategovt.html")
+
+
 if __name__ == "__main__":
 	app.run()
