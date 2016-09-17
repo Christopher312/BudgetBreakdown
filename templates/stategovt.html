@@ -24,7 +24,12 @@
 		}
 		</style>
 		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+		<script src="/static/assets/js/d3pie.min.js"></script>
 		<script>
+		var map = new Map()
+		map.set("PA", [72.821, 18.7, 2.6, 5.5, 33.3, 3.4, 9.6, 26.8])
+		map.set("NY", [140.367,19.3, 7.6, 3.2, 29.1, 2.3, 6.5, 32])
+		map.set("name", ["total_spending", "K12", "Higher Ed", "Public Assistance","medicaid","Corrections","Transport","other"])
 		function processForm(){
 			//alert("go to sleep");
 			var st = document.getElementById("state").value;
@@ -272,7 +277,7 @@
 									
 								</div>
 							</section>
-							<div class="chart"></div>
+							<div id="pieChart"></div>
 
 						<!-- Three -->
 							<section id="three">
