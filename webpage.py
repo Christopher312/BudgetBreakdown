@@ -7,6 +7,8 @@ def home():
     #return 'Index page'
     #root_dir = os.path.dirname(os.getcwd())
     #return send_from_directory(os.path.join(root_dir, 'static', 'js'), 'index.html')
+    with open('static/state_expenditures.csv') as f:
+    	print(f.readlines())
     return render_template("index.html")
 
 @app.route('/stategovt')
