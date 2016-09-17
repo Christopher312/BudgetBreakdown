@@ -71,33 +71,38 @@
 		"content": [
 			{
 				"label": "K12",
-				"value": scale * spendingValues[1] / 100,
+				"value": totalMoney * spendingValues[1] / 100.0,
 				"color": "#7c37c0"
 			},
 			{
 				"label": "Higher Ed",
-				"value": scale * spendingValues[2] / 100,
+				"value": totalMoney * spendingValues[2] / 100.0,
 				"color": "#cc9fb1"
 			},
 			{
 				"label": "Public Assistance",
-				"value": scale * spendingValues[3] / 100,
+				"value": totalMoney * spendingValues[3] / 100.0,
 				"color": "#e65414"
 			},
 			{
 				"label": "Medicaid",
-				"value": scale * spendingValues[4] / 100,
+				"value": totalMoney * spendingValues[4] / 100.0,
 				"color": "#8b6834"
 			},
 			{
 				"label": "Corrections",
-				"value": scale * spendingValues[5] / 100,
+				"value": totalMoney * spendingValues[5] / 100.0,
 				"color": "#248838"
 			},
 			{
+				"label": "Transportation",
+				"value": totalMoney * spendingValues[6] / 100.0,
+				"color": "#e98125"
+			},
+			{
 				"label": "Other",
-				"value": scale * spendingValues[5] / 100,
-				"color": "#000000"
+				"value": totalMoney * spendingValues[7] / 100.0,
+				"color": "#64a61f"
 			}
 		]
 	},
@@ -106,7 +111,8 @@
 			"pieDistance": 32
 		},
 		"inner": {
-			"hideWhenLessThanPercentage": 1
+			"hideWhenLessThanPercentage": 5,
+			"format": "value"
 		},
 		"mainLabel": {
 			"fontSize": 11,
