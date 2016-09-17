@@ -39,15 +39,8 @@
 					},
 					"titleSubtitlePadding": 9
 				},
-				"footer": {
-					"text": "data aggregated by ballotpedia.org",
-					"color": "#999999",
-					"fontSize": 10,
-					"font": "open sans",
-					"location": "bottom-left"
-				},
 				"size": {
-					"canvasWidth": 590,
+					"canvasWidth": $(window).width(),
 					"pieOuterRadius": "90%"
 				},
 				"data": {
@@ -55,27 +48,27 @@
 					"content": [
 						{
 							"label": "Salaries and Benefits",
-							"value": totalMoney * spendingValues[1] / 100.0,
+							"value": totalMoney * spendingValues[0] / 100.0,
 							"color": "#0066cc"
 						},
 						{
 							"label": "Supplies and Services",
-							"value": totalMoney * spendingValues[2] / 100.0,
+							"value": totalMoney * spendingValues[1] / 100.0,
 							"color": "#003366"
 						},
 						{
 							"label": "Occupancy and Other",
-							"value": totalMoney * spendingValues[3] / 100.0,
+							"value": totalMoney * spendingValues[2] / 100.0,
 							"color": "#336600"
 						},
 						{
 							"label": "Depreciation and Amortization",
-							"value": totalMoney * spendingValues[4] / 100.0,
+							"value": totalMoney * spendingValues[3] / 100.0,
 							"color": "#669966"
 						},
 						{
 							"label": "Interest Expense",
-							"value": totalMoney * spendingValues[5] / 100.0,
+							"value": totalMoney * spendingValues[4] / 100.0,
 							"color": "#990000"
 						}
 					]
