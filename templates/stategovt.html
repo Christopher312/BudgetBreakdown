@@ -13,6 +13,35 @@
 		<link rel="stylesheet" href="static/assets/css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="static/assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="static/assets/css/ie8.css" /><![endif]-->
+		<style>
+		.chart div {
+		  font: 10px sans-serif;
+		  background-color: white;
+		  text-align: right;
+		  padding: 3px;
+		  margin: 1px;
+		  color: white;
+		}
+		</style>
+		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+		<script>
+		function processForm(){
+			alert();
+		}
+		function processForm2(){
+		var data = [4, 8, 15, 16, 23, 42];
+
+		var x = d3.scale.linear()
+			.domain([0,d3.max(data)])
+			.range([0,420]); //actually a function although it looks like an object
+		d3.select(".chart")
+		  .selectAll("div")
+		    .data(data)
+		  .enter().append("div")
+		    .style("width", function(d) { return x(d) + "px"; })
+		    .text(function(d) { return d; });
+		}
+		</script>
 	</head>
 	<body>
 
@@ -72,43 +101,43 @@
 									<div class="row uniform">
 									<!-- Break -->
 										<div class="12u$">
-											<div class="select-wrapper">
+											<div class="select-wrapper" >
 												<select name="state" id="state" placeholder="Choose your state">
 													<option value="AL">Alabama</option>
-													<option value="">Alaska</option>
-													<option value="">Arizona</option>
-													<option value="">Arkansas</option>
-													<option value="">California</option>
-													<option value="">Colorado</option>
-													<option value="">Connecticut</option>
-													<option value="">Delaware</option>
-													<option value="">Florida</option>
-													<option value="">Georgia</option>
-													<option value="">Hawaii</option>
-													<option value="">Idaho</option>
-													<option value="">Illinois</option>
-													<option value="">Indiana</option>
-													<option value="">Iowa</option>
-													<option value="">Kansas</option>
-													<option value="">Kentucky</option>
-													<option value="">Louisiana</option>
-													<option value="">Maine</option>
-													<option value="">Maryland</option>
-													<option value="">Massachusetts</option>
-													<option value="">Michigan</option>
-													<option value="">Minnesota</option>
-													<option value="">Mississippi</option>
-													<option value="">Missouri</option>
-													<option value="">Montana</option>
-													<option value="">Nebraska</option>
-													<option value="">Nevada</option>
-													<option value="">New Hampshire</option>
-													<option value="">New Jersey</option>
-													<option value="">New Mexico</option>
-													<option value="">New York</option>
-													<option value="">North Carolina</option>
-													<option value="">North Dakota</option>
-													<option value="">Ohio</option>
+													<option value="AK">Alaska</option>
+													<option value="AZ">Arizona</option>
+													<option value="AR">Arkansas</option>
+													<option value="CA">California</option>
+													<option value="CO">Colorado</option>
+													<option value="CT">Connecticut</option>
+													<option value="DE">Delaware</option>
+													<option value="FL">Florida</option>
+													<option value="GA">Georgia</option>
+													<option value="HI">Hawaii</option>
+													<option value="ID">Idaho</option>
+													<option value="IL">Illinois</option>
+													<option value="IN">Indiana</option>
+													<option value="IA">Iowa</option>
+													<option value="KS">Kansas</option>
+													<option value="KY">Kentucky</option>
+													<option value="LA">Louisiana</option>
+													<option value="ME">Maine</option>
+													<option value="MD">Maryland</option>
+													<option value="MA">Massachusetts</option>
+													<option value="MI">Michigan</option>
+													<option value="MN">Minnesota</option>
+													<option value="MS">Mississippi</option>
+													<option value="MO">Missouri</option>
+													<option value="MT">Montana</option>
+													<option value="NE">Nebraska</option>
+													<option value="NV">Nevada</option>
+													<option value="NH">New Hampshire</option>
+													<option value="NJ">New Jersey</option>
+													<option value="NM">New Mexico</option>
+													<option value="NY">New York</option>
+													<option value="NC">North Carolina</option>
+													<option value="ND">North Dakota</option>
+													<option value="OH">Ohio</option>
 													<option value="OK">Oklahoma</option>
 													<option value="OR">Oregon</option>
 													<option value="PA">Pennsylvania</option>
@@ -127,7 +156,37 @@
 												</select>
 											</div>
 										</div>
-										<div class="dropdown">
+									
+										<div class="6u 12u$(xsmall)">
+											<input type="text" name="money" id="money" placeholder="Money Amount" />
+										</div>										
+									</div>
+									<br>
+									<input type="submit" value="Submit">
+								</form>
+
+
+
+									
+								</div>
+							</section>
+							<div class="chart"></div>
+
+						<!-- Three -->
+							<section id="three">
+								<div class="inner">
+									<header class="major">
+										<h2>Want to learn more?</h2>
+									</header>
+									<p>Head back to our homepage.</p>
+									<ul class="actions">
+										<li><a href="/" class="button next">Click Here</a></li>
+									</ul>
+								</div>
+							</section>
+
+					</div>
+					<!--	<div class="dropdown">
   									<button class="button">State</button>
   									<div class="dropdown-content">
   									  <option value="">Colorado</option>
@@ -183,35 +242,7 @@
   	                                  <a href ="#">Wisconsin</a>
   	                                  <a href ="#">Wyoming</a>
  											  </div>
-											  </div>
-										<div class="6u 12u$(xsmall)">
-											<input type="text" name="money" id="money" value="" placeholder="Money Amount" />
-										</div>										
-									</div>
-								</form>
-
-
-
-									
-								</div>
-							</section>
-
-
-						<!-- Three -->
-							<section id="three">
-								<div class="inner">
-									<header class="major">
-										<h2>Want to learn more?</h2>
-									</header>
-									<p>Head back to our homepage.</p>
-									<ul class="actions">
-										<li><a href="/" class="button next">Click Here</a></li>
-									</ul>
-								</div>
-							</section>
-
-					</div>
-
+										</div> -->				
 		<!-- Scripts -->
 			<script src="static/assets/js/jquery.min.js"></script>
 			<script src="static/assets/js/jquery.scrolly.min.js"></script>
