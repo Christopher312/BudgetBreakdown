@@ -13,6 +13,138 @@
 		<link rel="stylesheet" href="static/assets/css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="static/assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="static/assets/css/ie8.css" /><![endif]-->
+		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+		<script src="/static/assets/js/d3pie.min.js"></script>
+
+		<script>
+			colors = ["#cd0ed8","#ff7e00","#67f200","#7890ff","#8fe3fa","#0600f3","#f30000","#00b109","#ffff00"]
+			var map = new Map()
+			map.set("USA",[["Social Security, Unemployment & Labor", "Medicare & Health","Military", "Interest on Debt", "Veterans' Benefits","Food & Agriculture","Education","Transportation","Other"],[33,27,16,6,4,4,3,2,5],3.84])
+		function processForm(){
+			var st = document.getElementById("state").value;
+			var spendingValues = map.get(st);
+			//var keys = map.get("name")
+			var totalMoney = document.getElementById("money").value;
+			//var scale = totalMoney / spendingValues[0]
+			var pie = new d3pie("pieChart", {
+				"header": {
+					"title": {
+						"text": "Where "+st+" spends your money:",
+						"color": "#ffffff",
+						"fontSize": 24,
+						"font": "open sans"
+					},
+					"subtitle": {
+						"text": "total "+st+" expenditure: "+spendingValues[2]+" trillion USD",
+						"color": "#999999",
+						"fontSize": 12,
+						"font": "open sans"
+					},
+					"titleSubtitlePadding": 9
+				},
+				"size": {
+					"canvasWidth": $(window).width(),
+					"pieOuterRadius": "90%"
+				},
+				"data": {
+					"sortOrder": "value-desc",
+					"content": [
+						{
+							"label": spendingValues[0][0],
+							"value": Math.round(totalMoney * spendingValues[1][0]) / 100.0,
+							"color": colors[0]
+						},
+						{
+							"label": spendingValues[0][1],
+							"value": Math.round(totalMoney * spendingValues[1][1]) / 100.0,
+							"color": colors[1]
+						},
+						{
+							"label": spendingValues[0][2],
+							"value": Math.round(totalMoney * spendingValues[1][2]) / 100.0,
+							"color": colors[2]
+						},
+						{
+							"label": spendingValues[0][3],
+							"value": Math.round(totalMoney * spendingValues[1][3]) / 100.0,
+							"color": colors[3]
+						},
+						{
+							"label": spendingValues[0][4],
+							"value": Math.round(totalMoney * spendingValues[1][4]) / 100.0,
+							"color": colors[4]
+						},
+						{
+							"label": spendingValues[0][5],
+							"value": Math.round(totalMoney * spendingValues[1][5]) / 100.0,
+							"color": colors[5]
+						},
+						{
+							"label": spendingValues[0][6],
+							"value": Math.round(totalMoney * spendingValues[1][6]) / 100.0,
+							"color": colors[6]
+						},
+						{
+							"label": spendingValues[0][7],
+							"value": Math.round(totalMoney * spendingValues[1][7]) / 100.0,
+							"color": colors[7]
+						},
+						{
+							"label": spendingValues[0][8],
+							"value": Math.round(totalMoney * spendingValues[1][8]) / 100.0,
+							"color": colors[8]
+						}
+					]
+				},
+				"labels": {
+					"outer": {
+						"pieDistance": 32
+					},
+					"inner": {
+						"hideWhenLessThanPercentage": 5,
+						"format": "value"
+					},
+					"mainLabel": {
+						"fontSize": 11,
+						"color": "#ffffff"
+					},
+					"percentage": {
+						"color": "#ffffff",
+						"decimalPlaces": 0
+					},
+					"value": {
+						"color": "#ffffff",
+						"fontSize": 15
+					},
+					"lines": {
+						"enabled": true
+					},
+				},
+				"effects": {
+					"pullOutSegmentOnClick": {
+						"effect": "linear",
+						"speed": 400,
+						"size": 8
+					}
+				},
+				"tooltips": {
+					"enabled": true,
+					"type": "placeholder",
+					"string": "{label}:{value}",
+					"styles": {
+						"fadeInSpeed": 0,
+						"fontSize": 11
+					}
+				},
+				"misc": {
+					"gradient": {
+						"enabled": true,
+						"percentage": 100
+					}
+				}
+			});
+		}
+		</script>
 	</head>
 	<body>
 
@@ -85,7 +217,7 @@
 									<br>
 									<button type="button" id="submit" onclick="processForm()">Submit</button>
 								</form>
-
+								<div id="pieChart" align="center"></div>
 						<!-- Three -->
 							<section id="three">
 								<div class="inner">
