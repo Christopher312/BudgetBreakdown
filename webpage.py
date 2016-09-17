@@ -17,6 +17,8 @@ def stgov():
 def fedgov():
 	return render_template('fedgovt.html')
 
-
+@app.route('/colleges')
+def colleges():
+	return render_template('colleges.html')
 if __name__ == "__main__":
 	app.run()
