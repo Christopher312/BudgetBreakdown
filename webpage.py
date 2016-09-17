@@ -20,5 +20,10 @@ def fedgov():
 @app.route('/colleges')
 def colleges():
 	return render_template('colleges.html')
+
+@app.route('/charity')
+def charity():
+	return render_template('charity.html')
+
 if __name__ == "__main__":
 	app.run()
