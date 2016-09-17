@@ -18,8 +18,8 @@
 		<script>
 			colors = ["#cd0ed8","#ff7e00","#67f200","#7890ff","#8fe3fa","#0600f3","#f30000","#00b109"]
 			var map = new Map()
-			map.set("UNICEF - Overview",[["Development", "Management"," United Nations development coordination", "Special purpose (including capital investment)", "Other (including private fundraising and partnerships)"],[89.44, 7.58, 0.02, 0.26, 2.70],4.224])
-			map.set("UNICEF - Development Spending",[["Young child survival and development", "Basic education and gender equality", "Policy advocacy and partnerships for children's rights", "Child protection: Preventing and responding to violence, exploitation, and abuse", "HIV/AIDS and children", "Other interventions"],[50.1,17.9,8.0,9.8,2.7],3.588])
+			map.set("UNICEF (Overview)",[["Development", "Management"," United Nations development coordination", "Special purpose (including capital investment)", "Other (including private fundraising and partnerships)"],[89.44, 7.58, 0.02, 0.26, 2.70],4.224])
+			map.set("UNICEF (Development)",[["Young child survival and development", "Basic education and gender equality", "Policy advocacy and partnerships for children's rights", "Child protection: Preventing and responding to violence, exploitation, and abuse", "HIV/AIDS and children", "Other interventions"],[50.1,17.9,8.0,9.8,2.7],3.588])
 		function processForm(){
 			var st = document.getElementById("state").value;
 			var spendingValues = map.get(st);
@@ -42,15 +42,8 @@
 					},
 					"titleSubtitlePadding": 9
 				},
-				"footer": {
-					"text": "data aggregated by ballotpedia.org",
-					"color": "#999999",
-					"fontSize": 10,
-					"font": "open sans",
-					"location": "bottom-left"
-				},
 				"size": {
-					"canvasWidth": 590,
+					"canvasWidth": $(window).width(),
 					"pieOuterRadius": "90%"
 				},
 				"data": {
@@ -58,27 +51,27 @@
 					"content": [
 						{
 							"label": spendingValues[0][0],
-							"value": totalMoney * spendingValues[1][0] / 100.0,
+							"value": Math.round(totalMoney * spendingValues[1][0]) / 100.0,
 							"color": "#0066cc"
 						},
 						{
 							"label": spendingValues[0][1],
-							"value": totalMoney * spendingValues[1][1] / 100.0,
+							"value": Math.round(totalMoney * spendingValues[1][1]) / 100.0,
 							"color": "#003366"
 						},
 						{
 							"label": spendingValues[0][2],
-							"value": totalMoney * spendingValues[1][2] / 100.0,
+							"value": Math.round(totalMoney * spendingValues[1][2]) / 100.0,
 							"color": "#336600"
 						},
 						{
 							"label": spendingValues[0][3],
-							"value": totalMoney * spendingValues[1][3] / 100.0,
+							"value": Math.round(totalMoney * spendingValues[1][3]) / 100.0,
 							"color": "#669966"
 						},
 						{
 							"label": spendingValues[0][4],
-							"value": totalMoney * spendingValues[1][4] / 100.0,
+							"value": Math.round(totalMoney * spendingValues[1][4]) / 100.0,
 							"color": "#990000"
 						}
 					]
@@ -106,15 +99,21 @@
 					"lines": {
 						"enabled": true
 					},
-					"truncation": {
-						"enabled": true
-					}
 				},
 				"effects": {
 					"pullOutSegmentOnClick": {
 						"effect": "linear",
 						"speed": 400,
 						"size": 8
+					}
+				},
+				"tooltips": {
+					"enabled": true,
+					"type": "placeholder",
+					"string": "{label}:{value}",
+					"styles": {
+						"fadeInSpeed": 0,
+						"fontSize": 11
 					}
 				},
 				"misc": {
@@ -181,10 +180,11 @@
 									<!-- Break -->
 										<div class="12u$">
 											<div class="select-wrapper" >
-												<select name="state" id="state" placeholder="Choose your country">
+												<select name="state" id="state" placeholder="Choose your organization">
 													<option value="USA">Red Cross</option>
 													<option value="CAN">Planned Parenthood</option>
-													<option value="GER">UNICEF</option>
+													<option value="UNICEF (Overview)">UNICEF - overview</option>
+													<option value="UNICEF (Development)">UNICEF - development spending only</option>
 													<option value="SKR">Susan G. Komen</option>
 													<option value="MEX">Salvation Army</option>
 												</select>
@@ -198,7 +198,7 @@
 									<br>
 									<button type="button" id="submit" onclick="processForm()">Submit</button>
 								</form>
-						
+						<div id="pieChart" align="center"></div>
 
 						<!-- Three -->
 							<section id="three">
